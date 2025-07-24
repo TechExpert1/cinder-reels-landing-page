@@ -34,7 +34,7 @@ const FAQ = () => {
             </div>
           ))}
         </div>
-        <div className='border-t-[1px] border-[#3C3C3C] mt-[60px] md:px-6'>
+        <div className='border-t-[1px] border-[#3C3C3C] mt-[40px] md:mt-[60px] md:px-6'>
           <div className="text-center pb-[27px] pt-[24px] md:pb-[44px] md:pt-[30px] font-normal text-sm"> © 2025 Cinder Reels. All rights reserved.</div>
         </div>
       </div>
