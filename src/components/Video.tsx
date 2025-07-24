@@ -1,4 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
+import Vid from '../assets/CinderReels Holding page video.mp4';
+import Thumbnail from '../assets/thumbnail.png';
+
 const Video = () => {
       const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -23,10 +26,10 @@ const Video = () => {
     };
     return (
         <div className="flex items-center justify-center relative bg-black max-h-[200px] md:min-h-screen pb-[40px] px-[20px] md:px-[100px]">
-            <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster="/src/assets/thumbnail.png" onEnded={() => { setIsPlaying(false); }} /*playsInline*/>
-              <source src="\src\assets\CinderReels Holding page video.mp4" type="video/mp4"/> ur browser does not support the video tag  
+            <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster={Thumbnail} onEnded={() => { setIsPlaying(false); }} /*playsInline*/>
+              <source src={Vid} type="video/mp4"/> ur browser does not support the video tag  
             </video>  
-
+      
             <button onClick={handlePlayClick} className={`h-[33px] w-[33px] md:h-[80px] md:w-[80px] flex items-center justify-center absolute rounded-full bg-opacity-50 bg-black hover:bg-opacity-30 transition-all z-10 ${showButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             {!isPlaying ? (
                 <div className="w-0 h-0 border-l-[10px] md:border-l-[20px] border-l-white border-t-[6px] md:border-t-[12px] border-t-transparent border-b-[6px] md:border-b-[12px] border-b-transparent ml-1"></div>
