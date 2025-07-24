@@ -17,7 +17,7 @@ const SignupPerks = () => {
   return (
     <div className="bg-black text-white md:py-[0px] py-[30px] px-[20px] md:px-[50px]">
       <div className="max-w-sm md:max-w-6xl mx-auto">
-        <h2 className="text-[24px] md:text-[34px] font-bold font-['Montserrat'] text-center mb-[24px] md:mb-[50px]">
+        <h2 className="text-[24px] md:text-[30px] font-bold font-['Montserrat'] text-center mb-[24px] md:mb-[50px]">
           What happens after you sign up?
         </h2>
 

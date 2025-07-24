@@ -16,14 +16,14 @@ const FAQ = () => {
   return (
     <div className="bg-black text-white font-['Montserrat'] pt-[40px] md:pt-[80px] px-4 md:px-[50px]">
       <div className="max-w-sm md:max-w-6xl mx-auto">
-        <h2 className="text-[24px] md:text-[34px] md:leading-[80px] font-bold text-center md:mb-12">
+        <h2 className="text-[24px] md:text-[34px] md:leading-[80px] font-bold text-center mb-[24px] md:mb-12">
           Frequently Asked Questions
         </h2>
         
         <div className="space-y-[16px] md:space-y-[24px]">
           {faqData.map((faq, index) => (
             <div key={index} className="bg-[#1E1E1E] rounded-[12px] md:rounded-[22px] border-[2px] border-[#2E2E2E] overflow-hidden transition-all duration-300">
-              <button onClick={() => toggleFAQ(index)} className="w-full px-[12px] md:px-[24px] py-[0px] md:py-[24px] text-left flex justify-between items-center transition-colors duration-200">
+              <button onClick={() => toggleFAQ(index)} className="w-full px-[12px] md:px-[24px] py-[20px] md:py-[24px] text-left flex justify-between items-center transition-colors duration-200">
                 <span className="text-[16px] md:text-[20px] font-bold pr-[10px]">{faq.question} </span>
                 <div className={`transform transition-transform duration-300 ${ openIndex === index ? 'rotate-180' : '' }`}> <img src={arrow}className="w-6 h-6" /></div>
               </button>

@@ -21,8 +21,8 @@ const LaunchSection = () => {
         </p>
         
         {/* Launch Banner */}
-        <div className="bg-[#960000] py-5 md:py-6 px-3 md:px-8 rounded-[10px] md:rounded-[16px] mb-6 md:mb-12 mx-auto max-w-sm md:max-w-[884px] ">
-          <h2 className="text-[20px] md:text-[34px] font-bold text-white">Our App is Launching Soon!</h2>
+        <div className="bg-[#960000] py-5 md:py-5 px-3 md:px-8 rounded-[10px] md:rounded-[16px] mb-6 md:mb-12 mx-auto max-w-sm md:max-w-[884px] ">
+          <h2 className="text-[20px] md:text-[30px] font-bold text-white">Our App is Launching Soon!</h2>
         </div>
         
         {/* Signup Section */}
