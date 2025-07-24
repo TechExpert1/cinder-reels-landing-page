@@ -42,7 +42,7 @@ const Features = () => {
   return (
     <div className="bg-black text-white min-h-screen py-[10px] px-[20px] md:px-8">
       <div className="max-w-sm md:max-w-6xl text-['Montserrat'] mx-auto">
-        <h1 className="text-[24px] md:text-[40px] font-bold text-center mb-[24px] md:mb-16">
+        <h1 className="text-[24px] md:text-[34px] font-bold text-center mb-[24px] md:mb-16">
           What you'll love on Day 1 with CinderReels
         </h1>
         
@@ -52,8 +52,8 @@ const Features = () => {
               <div className="mb-4">
                 <img src={`${feature.image}`} className="w-[36px] h-[36px] md:w-[44px] md:h-[44px] object-contain" />
               </div>
-              <h3 className=" text-[18px] md:text-[24px] font-bold mb-4">{feature.title}</h3>
-              <p className="text-[14px] md:text-[18px] font-normal leading-[32px]">{feature.description}</p>
+              <h3 className=" text-[18px] md:text-[20px] font-bold mb-4">{feature.title}</h3>
+              <p className="text-[14px] md:text-[15px] font-normal leading-[32px]">{feature.description}</p>
             </div>
           ))}
         </div>
