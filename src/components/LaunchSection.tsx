@@ -11,7 +11,7 @@ const LaunchSection = () => {
   };
 
   return (
-    <div className="bg-[#0E0E0E] text-white py-0 md:py-20 px-4 md:px-8 font-['Montserrat']">
+    <div className="bg-[#0E0E0E] text-white py-[40px] md:py-20 px-4 md:px-8 font-['Montserrat']">
       <div className="max-w-sm md:max-w-[1183px] mx-auto text-center">
         {/* Main Description */}
         <p className="text-[20px] md:text-[32px] font-medium mb-6 md:mb-12 leading-relaxed">

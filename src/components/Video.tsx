@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react';
 const Video = () => {
       const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [showThumbnail, setShowThumbnail] = useState(true);
     const [showButton, setShowButton] = useState(true);
 
     useEffect(() => {
@@ -17,15 +16,14 @@ const Video = () => {
                 videoRef.current.pause();
                 setIsPlaying(false);
             } else {
-                setShowThumbnail(false);
                 videoRef.current.play();
                 setIsPlaying(true);
             }
         }
     };
     return (
-        <div className="flex items-center justify-center relative bg-black min-h-screen  md:pb-[40px] px-[20px] md:px-[100px]">
-            <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster="/src/assets/thumbnail.png" onEnded={() => { setIsPlaying(false); setShowThumbnail(true); }} /*playsInline*/>
+        <div className="flex items-center justify-center relative bg-black max-h-[200px] md:min-h-screen pb-[40px] px-[20px] md:px-[100px]">
+            <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster="/src/assets/thumbnail.png" onEnded={() => { setIsPlaying(false); }} /*playsInline*/>
               <source src="\src\assets\CinderReels Holding page video.mp4" type="video/mp4"/> ur browser does not support the video tag  
             </video>  
 

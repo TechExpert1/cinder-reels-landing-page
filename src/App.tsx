@@ -3,6 +3,8 @@ import Hero from './components/Hero'
 import LaunchSection from './components/LaunchSection'
 import Video from './components/Video'
 import Features from './components/Features'
+import SignupPerks from './components/SignupPerks'
+import FAQ from './components/FAQ'
 
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
       <LaunchSection />
       <Video/>
       <Features />
+      <SignupPerks />
+      <FAQ />
     </div>
   )
 }
