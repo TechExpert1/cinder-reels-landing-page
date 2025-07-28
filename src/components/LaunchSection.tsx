@@ -28,9 +28,8 @@ const LaunchSection = () => {
         {/* Signup Section */}
         <div className="bg-[#1E1E1E] border-[#2E2E2E] border-[1px] p-4 md:p-8 rounded-2xl max-w-sm md:max-w-[884px] mx-auto py-[25px] md:py-[50px]">
           <p className="text-[18px] md:text-[20px] mb-[20px] md:mb-[40px] md:px-[148px]">
-            <span className="text-[#FF0000] font-bold">RESERVE</span> your spot for early access and{' '}
-            {/* <br /> */}
-            lock in your <span className="font-bold">@username</span>
+            We'll email your download link to enable you to secure your{' '}
+            username - <span className="font-bold">@handle</span>
           </p>
           
           {/* Email Form */}

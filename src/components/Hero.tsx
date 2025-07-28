@@ -1,8 +1,38 @@
+import { useState, useEffect } from 'react';
 import cinderReelsLogo from '../assets/logo-laptop view.png'
 import heroBg from '../assets/hero bg.png'
 import hourGlass from '../assets/hour glass.png';
 
 const Hero = () => {
+  const [timeRemaining, setTimeRemaining] = useState({ hours: 12, minutes: 6 });
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchTimerData = async () => {
+    try {
+      const response = await fetch('https://cinderreels-production.up.railway.app/api/v1/vanish/timer');
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success && result.data.timeRemaining) {
+          setTimeRemaining({
+            hours: result.data.timeRemaining.hours,
+            minutes: result.data.timeRemaining.minutes
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch timer data:', error);
+      // Keep default values on error
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTimerData();
+    const interval = setInterval(fetchTimerData, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative md:h-screen w-screen flex items-center justify-center m-0 p-0 md:pt-20 pt-[90px] font-['Montserrat']">
       <div 
@@ -25,7 +55,9 @@ const Hero = () => {
         {/* Timer Badge */}
         <div className="flex items-center justify-center bg-[#FFC70E] w-full h-[50px] md:max-w-[418px] md:w-[418px] md:h-[69px] rounded-[25px] md:rounded-[51px] text-[18px] md:text-[24px] mb-0 md:mb-12 mx-auto px-4 md:mt-0 mt-[30px] md:px-0">
               <img src={hourGlass} className="h-[20px] w-[20px] md:h-6 md:w-[17px] mr-2 md:mr-3 flex-shrink-0" />
-              <span className="font-['Montserrat'] font-semibold text-[18px] md:text-[20.4px] text-[#F03817] text-center">Posts vanish in: 12 h : 06 m</span>
+              <span className="font-['Montserrat'] font-semibold text-[18px] md:text-[20.4px] text-[#F03817] text-center">
+                {isLoading ? 'Loading...' : `Posts vanish in: ${timeRemaining.hours} h : ${String(timeRemaining.minutes).padStart(2, '0')} m`}
+              </span>
         </div>
         
       </div>

@@ -91,6 +91,19 @@ const Video = () => {
                     </button>
                 </div>
             </div>
+
+            {/*progress bar for desktop view */}
+            <div className={`hidden md:block absolute bottom-[60px] left-[110px] right-[110px] transition-all ${showButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                <input type="range" min="0" max="100" value={progress} onChange={handleSeek} className="w-full h-[8px] rounded-[35px] appearance-none cursor-pointer bg-[#31313180] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-[16px] [&::-webkit-slider-thumb]:h-[16px] [&::-webkit-slider-thumb]:bg-[#4A90E2] [&::-webkit-slider-thumb]:rounded-full [&::-moz-range-thumb]:w-[16px] [&::-moz-range-thumb]:h-[16px] [&::-moz-range-thumb]:bg-[#4A90E2] [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0"/>
+                <div className="flex items-center justify-between mt-2">
+                    <div className="text-white text-[14px] font-semibold font-['Montserrat']">
+                        {Math.floor((duration - currentTime) / 60)}:{String(Math.floor((duration - currentTime) % 60)).padStart(2, '0')}
+                    </div>
+                    <button 
+                        onClick={handleFullscreen} className="flex items-center justify-center"> <img src={Enlarge} className="w-[28px] h-[28px]" />
+                    </button>
+                </div>
+            </div>
         </div>
 
     );
