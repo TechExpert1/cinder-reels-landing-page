@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import Vid from '../assets/CinderReels Holding page video.mp4';
+import Vid from '../assets/CinderReels Holding page video (revised).mp4';
 import Thumbnail from '../assets/thumbnail.png';
 import Enlarge from '../assets/enlarge.png';
 
