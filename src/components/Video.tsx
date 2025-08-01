@@ -61,8 +61,27 @@ const Video = () => {
 
     const handleFullscreen = () => {
         if (videoRef.current) {
-            if (videoRef.current.requestFullscreen) {
-                videoRef.current.requestFullscreen();
+            // For iOS Safari, try webkitEnterFullscreen first
+            if ('webkitEnterFullscreen' in videoRef.current) {
+                try {
+                    (videoRef.current as any).webkitEnterFullscreen();
+                } catch (error) {
+                    console.log('webkitEnterFullscreen failed:', error);
+                }
+            }
+            // Fallback to standard fullscreen API
+            else if (videoRef.current.requestFullscreen) {
+                videoRef.current.requestFullscreen().catch(error => {
+                    console.log('requestFullscreen failed:', error);
+                });
+            }
+            // Additional fallback for other webkit browsers
+            else if ('webkitRequestFullscreen' in videoRef.current) {
+                try {
+                    (videoRef.current as any).webkitRequestFullscreen();
+                } catch (error) {
+                    console.log('webkitRequestFullscreen failed:', error);
+                }
             }
         }
     };
