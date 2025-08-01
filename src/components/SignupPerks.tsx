@@ -9,7 +9,7 @@ const SignupPerks = () => {
     },
     {
       title: "Day-one access",
-      description: "We'll email your download link & reserved @handle.",
+      description: "We’ll email your download link to enable you to secure your username - @handle",
       image: D1A
     }
   ];
