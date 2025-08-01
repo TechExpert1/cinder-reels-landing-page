@@ -22,11 +22,21 @@ const Video = () => {
             if (isPlaying) {
                 videoRef.current.pause();
                 setIsPlaying(false);
+                setShowButton(true); // Force show button when paused
             } else {
                 videoRef.current.play();
                 setIsPlaying(true);
             }
         }
+    };
+
+    const handleVideoPause = () => {
+        setIsPlaying(false);
+        setShowButton(true); // Always show button when video is paused
+    };
+
+    const handleVideoPlay = () => {
+        setIsPlaying(true);
     };
 
 
@@ -63,7 +73,7 @@ const Video = () => {
         <div className="flex items-center justify-center relative bg-black max-h-[200px] md:min-h-screen pb-[40px] px-[20px] md:px-[100px]" 
              onClick={() => setShowButton(true)} 
              onMouseEnter={() => setShowButton(true)}>
-            <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster={Thumbnail} onEnded={() => { setIsPlaying(false); }} onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetadata} /*playsInline*/>
+            <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster={Thumbnail} onEnded={() => { setIsPlaying(false); }} onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetadata} onPause={handleVideoPause} onPlay={handleVideoPlay} playsInline>
               <source src={Vid} type="video/mp4"/> ur browser does not support the video tag  
             </video>
 
