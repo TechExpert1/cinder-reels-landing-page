@@ -116,7 +116,7 @@ const Video = () => {
                         {Math.floor((duration - currentTime) / 60)}:{String(Math.floor((duration - currentTime) % 60)).padStart(2, '0')}
                     </div>
                     <button 
-                        onClick={handleFullscreen} className="flex items-center justify-center"> <img src={Enlarge} className="w-[20px] h-[20px]" />
+                        onClick={handleFullscreen} className="flex items-center justify-center p-2 -m-2"> <img src={Enlarge} className="w-[20px] h-[20px]" />
                     </button>
                 </div>
             </div>
@@ -129,7 +129,7 @@ const Video = () => {
                         {Math.floor((duration - currentTime) / 60)}:{String(Math.floor((duration - currentTime) % 60)).padStart(2, '0')}
                     </div>
                     <button 
-                        onClick={handleFullscreen} className="flex items-center justify-center"> <img src={Enlarge} className="w-[28px] h-[28px]" />
+                        onClick={handleFullscreen} className="flex items-center justify-center p-2 -m-2"> <img src={Enlarge} className="w-[28px] h-[28px]" />
                     </button>
                 </div>
             </div>
