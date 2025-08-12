@@ -29,7 +29,7 @@ const LaunchSection = () => {
         }
       );
       
-      setSubmitMessage("✓ Thank you for registering your email address. Please check your inbox or spam folder for our 'You're on the list email.");
+      setSubmitMessage("✓ Thank you for registering your email address. Please check your inbox or spam folder for our \"You're on the list\" email.");
       setEmail(""); // Clear the form
     } catch (error) {
       // console.error("Error submitting email:", error);
