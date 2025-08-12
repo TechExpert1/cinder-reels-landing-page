@@ -61,14 +61,6 @@ const Video = () => {
         }
     };
 
-    const handleSeekStart = (e: React.TouchEvent | React.MouseEvent) => {
-        e.stopPropagation();
-        setShowButton(true);
-    };
-
-    const handleSeekEnd = (e: React.TouchEvent | React.MouseEvent) => {
-        e.stopPropagation();
-    };
 
     const handleFullscreen = () => {
         if (videoRef.current) {
