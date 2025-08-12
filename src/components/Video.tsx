@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
-import Vid from '../assets/CinderReels Holding page video (revised).mp4';
+// import Vid from '../assets/CinderReels Holding page video (revised).mp4';
 import Thumbnail from '../assets/thumbnail.png';
 import Enlarge from '../assets/enlarge.png';
 
 const Video = () => {
-      const videoRef = useRef<HTMLVideoElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [showButton, setShowButton] = useState(true);
     const [currentTime, setCurrentTime] = useState(0);
@@ -93,7 +93,7 @@ const Video = () => {
              onClick={() => setShowButton(true)} 
              onMouseEnter={() => setShowButton(true)}>
             <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster={Thumbnail} onEnded={() => { setIsPlaying(false); }} onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetadata} onPause={handleVideoPause} onPlay={handleVideoPlay} playsInline>
-              <source src={Vid} type="video/mp4"/> ur browser does not support the video tag  
+              <source src="http://cinderreels.s3.us-east-1.amazonaws.com/CinderReels+Holding+page+video+(revised).mp4" type="video/mp4"/> ur browser does not support the video tag  
             </video>
 
             {/* play/pause */}
