@@ -34,7 +34,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative md:h-screen w-screen flex items-center justify-center m-0 p-0 md:pt-20 pt-[90px] font-['Montserrat']">
+    <div className="relative md:h-screen w-screen flex items-center justify-center m-0 p-0 md:pt-20 pt-[90px] font-['Montserrat'] pb-10">
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroBg})` }}
       />

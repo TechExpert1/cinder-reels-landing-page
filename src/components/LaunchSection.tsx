@@ -29,11 +29,11 @@ const LaunchSection = () => {
         }
       );
       
-      setSubmitMessage("✓ Email submitted successfully! We'll be in touch soon.");
+      setSubmitMessage("✓ Thank you for registering your email address. Please check your inbox or spam folder for our 'You're on the list email.");
       setEmail(""); // Clear the form
     } catch (error) {
-      console.error("Error submitting email:", error);
-      setSubmitMessage("✗ Error submitting email. Please try again.");
+      // console.error("Error submitting email:", error);
+      setSubmitMessage("Please enter a valid email");
     } finally {
       setIsSubmitting(false);
     }
