@@ -4,22 +4,47 @@ import axios from "axios";
 
 const LaunchSection = () => {
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    axios
-      .post(
+    
+    if (!email || isSubmitting) return;
+    
+    setIsSubmitting(true);
+    setSubmitMessage("");
+    
+    try {
+      await axios.post(
         "https://cinderreels-production.up.railway.app/api/v1/auth/early-access-welcome",
         {
           email: email,
+        },
+        {
+          timeout: 10000, // 10 second timeout
+          headers: {
+            'Content-Type': 'application/json',
+          }
         }
-      )
-      .then(() => {
-        alert("Email submitted successfully");
-      })
-      .catch(() => {
-        alert("Error submitting email");
-      });
+      );
+      
+      setSubmitMessage("✓ Email submitted successfully! We'll be in touch soon.");
+      setEmail(""); // Clear the form
+    } catch (error) {
+      console.error("Error submitting email:", error);
+      setSubmitMessage("✗ Error submitting email. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget.form;
+    if (form) {
+      form.requestSubmit();
+    }
   };
 
   return (
@@ -68,11 +93,20 @@ const LaunchSection = () => {
             </div>
             <button
               type="submit"
-              className="bg-[#3498DB] py-[13px] md:py-[18px] hover:bg-white text-white hover:text-[#3498DB] w-[179px] rounded-lg font-semibold transition-colors max-h-[56px] md:h-[56px] text-[16px] font-['Montserrat']"
+              onClick={handleButtonClick}
+              disabled={isSubmitting || !email.trim()}
+              className="bg-[#3498DB] py-[13px] md:py-[18px] hover:bg-white text-white hover:text-[#3498DB] w-[179px] rounded-lg font-semibold transition-colors max-h-[56px] md:h-[56px] text-[16px] font-['Montserrat'] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Get My Invite
+              {isSubmitting ? "Submitting..." : "Get My Invite"}
             </button>
           </form>
+          
+          {/* Status Message */}
+          {submitMessage && (
+            <div className={`mt-4 text-sm font-['Montserrat'] ${submitMessage.includes('✓') ? 'text-green-400' : 'text-red-400'}`}>
+              {submitMessage}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -53,10 +53,21 @@ const Video = () => {
     };
 
     const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
         const seekTime = (parseFloat(e.target.value) / 100) * duration;
         if (videoRef.current) {
             videoRef.current.currentTime = seekTime;
         }
+    };
+
+    const handleSeekStart = (e: React.TouchEvent | React.MouseEvent) => {
+        e.stopPropagation();
+        setShowButton(true);
+    };
+
+    const handleSeekEnd = (e: React.TouchEvent | React.MouseEvent) => {
+        e.stopPropagation();
     };
 
     const handleFullscreen = () => {
@@ -89,9 +100,10 @@ const Video = () => {
     const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
     return (
-        <div className="flex items-center justify-center relative bg-black max-h-[200px] md:min-h-screen pb-[40px] px-[20px] md:px-[100px]" 
+        <div className="flex items-center justify-center relative bg-black max-h-[200px] md:min-h-screen pb-[40px] px-[20px] md:px-[100px] overflow-hidden" 
              onClick={() => setShowButton(true)} 
-             onMouseEnter={() => setShowButton(true)}>
+             onMouseEnter={() => setShowButton(true)}
+             style={{ touchAction: 'pan-y' }}>
             <video ref={videoRef} className="relative md:w-full h-full object-cover z-0 rounded-[8.3px] md:rounded-3xl" loop poster={Thumbnail} onEnded={() => { setIsPlaying(false); }} onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetadata} onPause={handleVideoPause} onPlay={handleVideoPlay} playsInline>
               <source src="http://cinderreels.s3.us-east-1.amazonaws.com/CinderReels+Holding+page+video+(revised).mp4" type="video/mp4"/> ur browser does not support the video tag  
             </video>
@@ -110,7 +122,17 @@ const Video = () => {
 
               {/*progress bar for mobile view */}
             <div className={`md:hidden absolute bottom-[35px] left-[24px] right-[24px] transition-all ${showButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <input type="range" min="0" max="100" value={progress} onChange={handleSeek} className="w-full h-[6px] rounded-[35px] appearance-none cursor-pointer bg-[#31313180] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-[10px] [&::-webkit-slider-thumb]:h-[10px] [&::-webkit-slider-thumb]:bg-[#4A90E2] [&::-webkit-slider-thumb]:rounded-full [&::-moz-range-thumb]:w-[10px] [&::-moz-range-thumb]:h-[10px] [&::-moz-range-thumb]:bg-[#4A90E2] [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0"/>
+                <input 
+                    type="range" 
+                    min="0" 
+                    max="100" 
+                    value={progress} 
+                    onChange={handleSeek}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    onTouchMove={(e) => e.stopPropagation()}
+                    onTouchEnd={(e) => e.stopPropagation()}
+                    className="w-full h-[6px] rounded-[35px] appearance-none cursor-pointer bg-[#31313180] touch-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-[10px] [&::-webkit-slider-thumb]:h-[10px] [&::-webkit-slider-thumb]:bg-[#4A90E2] [&::-webkit-slider-thumb]:rounded-full [&::-moz-range-thumb]:w-[10px] [&::-moz-range-thumb]:h-[10px] [&::-moz-range-thumb]:bg-[#4A90E2] [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0"
+                />
                 <div className="flex items-center justify-between">
                     <div className="text-white text-[10px] font-semibold font-['Montserrat']">
                         {Math.floor((duration - currentTime) / 60)}:{String(Math.floor((duration - currentTime) % 60)).padStart(2, '0')}
